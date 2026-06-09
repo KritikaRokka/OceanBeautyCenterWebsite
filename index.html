@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Océano Centro de Belleza | Aruba</title>
+  <meta name="description" content="Océano Centro de Belleza — Alisado, Blower, Color, Keratina y más. Donde tu estilo fluye como el mar."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+  /* ═══ RESET ═══ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal:        #00C4CC;
+    --teal-deep:   #0097A0;
+    --teal-glow:   rgba(0,196,204,0.3);
+    --teal-soft:   rgba(0,196,204,0.10);
+    --teal-faint:  rgba(0,196,204,0.05);
+    --dark:        #030910;
+    --dark-mid:    #060F1A;
+    --dark-navy:   #081525;
+    --white:       #ffffff;
+    --glass-bg:    rgba(255,255,255,0.055);
+    --glass-b:     rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.09);
+    --text-bright: rgba(255,255,255,0.93);
+    --text-mid:    rgba(255,255,255,0.65);
+    --text-muted:  rgba(255,255,255,0.38);
+  }
+  /* ═══ LIGHT MODE OVERRIDES ═══ */
+  body.light {
+    --dark:        #f0f4f8;
+    --dark-mid:    #e2eaf2;
+    --dark-navy:   #d4e0ec;
+    --white:       #0d1b2a;
+    --glass-bg:    rgba(255,255,255,0.55);
+    --glass-b:     rgba(0,150,160,0.15);
+    --glass-hover: rgba(255,255,255,0.75);
+    --text-bright: rgba(10,25,45,0.92);
+    --text-mid:    rgba(10,25,45,0.62);
+    --text-muted:  rgba(10,25,45,0.38);
+    --teal-glow:   rgba(0,150,160,0.25);
+  }
+  body.light { background: var(--dark); color: var(--text-bright); }
+  body.light #nav.scrolled { background: rgba(240,244,248,0.85); border-bottom-color: rgba(0,160,170,0.12); }
+  body.light .mob-overlay  { background: rgba(240,244,248,0.98); }
+  body.light .mob-overlay a { color: var(--text-bright); }
+  body.light .trust-glass  { background: rgba(0,170,180,0.9); }
+  body.light .hero-media   { filter: brightness(0.92) saturate(0.9); }
+  /* Hero text always white — it sits over a dark photo regardless of theme */
+  body.light #hero .hero-title    { color: #ffffff; }
+  body.light #hero .hero-sub-title { color: var(--teal); }
+  body.light #hero .hero-desc     { color: rgba(255,255,255,0.78); }
+  body.light #hero .hero-pill     { color: var(--teal); background: rgba(0,196,204,0.12); border-color: rgba(0,196,204,0.28); }
+  body.light #hero .hero-badge-item { color: rgba(255,255,255,0.8); }
+  body.light #hero .svc-pill      { color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); }
+  body.light #hero .svc-pill:hover { color: #ffffff; }
+  /* WhatsApp button in hero — official green in both themes */
+  #hero .btn-glass {
+    background: rgba(37,211,102,0.12);
+    border-color: #25D366;
+    color: #25D366;
+  }
+  #hero .btn-glass:hover {
+    background: #25D366;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(37,211,102,0.35);
+  }
+  body.light #hero .btn-glass {
+    background: rgba(37,211,102,0.12);
+    border-color: #25D366;
+    color: #25D366;
+  }
+  body.light #hero .btn-glass:hover {
+    background: #25D366;
+    color: #ffffff;
+  }
+  body.light .promo-featured-body { background: rgba(255,255,255,0.75); }
+  body.light footer         { background: rgba(220,230,240,0.98); }
+  body.light .footer-bottom { border-top-color: rgba(0,0,0,0.07); }
+  body.light .soc-btn       { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); color: rgba(10,25,45,0.55); }
+  body.light .nav-links a   { color: rgba(10,25,45,0.55); }
+  body.light .nav-links a:hover { color: var(--teal-deep); }
+  body.light .nav-brand     { color: var(--text-bright); }
+  body.light .ham span      { background: var(--text-bright); }
+  body.light .btn-glass     { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); color: var(--text-bright); }
+  body.light .btn-glass:hover { background: rgba(0,0,0,0.1); }
+  body.light .section-title { color: var(--text-bright); }
+  body.light h3, body.light h4 { color: var(--text-bright); }
+  body.light .svc-card h3, body.light .proc-title, body.light .why-title { color: rgba(10,25,45,0.9); }
+  body.light .promo-card h3, body.light .ba-info h4 { color: rgba(10,25,45,0.9); }
+  body.light .footer-col h5 { color: rgba(10,25,45,0.85); }
+  body.light .footer-col a  { color: rgba(10,25,45,0.45); }
+  body.light .footer-brand-name { color: rgba(10,25,45,0.9); }
+  body.light .stat-num      { color: rgba(10,25,45,0.9); }
+
+  /* ═══ THEME TOGGLE BUTTON ═══ */
+  #theme-toggle {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--glass-b);
+    background: var(--glass-bg); backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    position: relative; overflow: hidden;
+  }
+  #theme-toggle:hover { border-color: var(--teal); background: var(--teal-soft); transform: scale(1.08); }
+  .toggle-icon {
+    position: absolute; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+  }
+  .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+  .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.5); }
+  body.light .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+  body.light .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: var(--text-bright);
+    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* ═══ CANVAS ═══ */
+  #bg-canvas {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; width: 100%; height: 100%;
+  }
+
+  /* ═══ GLASSMORPHISM ═══ */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-b);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+  }
+  .glass-teal {
+    background: rgba(0,196,204,0.07);
+    border: 1px solid rgba(0,196,204,0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 18px;
+  }
+
+  /* ═══ UTILITIES ═══ */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .section    { padding: 110px 0; position: relative; z-index: 1; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 16px;
+  }
+  .eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--teal); flex-shrink: 0; }
+
+  h1,h2,h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.05; }
+
+  /* ═══ SCROLL REVEAL ═══ */
+  .reveal {
+    opacity: 0; transform: translateY(26px);
+    transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; }
+  .d3 { transition-delay: 0.24s; } .d4 { transition-delay: 0.32s; }
+
+  /* ═══ BUTTONS ═══ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 14px 30px; border-radius: 100px; border: none; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .btn-teal {
+    background: var(--teal); color: var(--dark);
+    box-shadow: 0 0 0 0 var(--teal-glow);
+  }
+  .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--teal-glow); }
+  .btn-glass {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+    color: var(--white); backdrop-filter: blur(10px);
+  }
+  .btn-glass:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+  .btn-outline-teal {
+    background: transparent; border: 1px solid rgba(0,196,204,0.4); color: var(--teal);
+  }
+  .btn-outline-teal:hover { background: var(--teal-faint); border-color: var(--teal); }
+
+  /* ═══ NAVBAR ═══ */
+  #nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    padding: 20px 0; transition: all 0.35s ease;
+  }
+  #nav.scrolled {
+    padding: 12px 0;
+    background: rgba(3,9,16,0.8);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(0,196,204,0.08);
+  }
+  .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo-wrap { display: flex; align-items: center; }
+  .nav-logo-img {
+    height: 48px; width: auto; display: block;
+    /* Logo has black bg — invert in light mode is handled separately */
+    filter: drop-shadow(0 0 8px rgba(0,196,204,0.15));
+    transition: filter 0.3s;
+  }
+  .nav-logo-img:hover { filter: drop-shadow(0 0 14px rgba(0,196,204,0.4)); }
+  /* In light mode the logo is teal-on-black — brighten slightly so it reads on light bg */
+  body.light .nav-logo-img { filter: drop-shadow(0 0 8px rgba(0,150,160,0.2)) brightness(0.85); }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .nav-links a { color: var(--text-muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+  .ham span { display: block; width: 22px; height: 1.5px; background: var(--white); }
+
+  .mob-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9998;
+    background: rgba(3,9,16,0.97); backdrop-filter: blur(24px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  }
+  .mob-overlay.open { display: flex; }
+  .mob-overlay a {
+    color: var(--white); font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 3rem; font-weight: 300; transition: color 0.2s;
+  }
+  .mob-overlay a:hover { color: var(--teal); }
+  .mob-close {
+    position: absolute; top: 28px; right: 28px; background: none; border: none;
+    color: var(--text-muted); cursor: pointer;
+  }
+
+  /* ═══ HERO ═══ */
+  #hero {
+    min-height: 100vh; display: flex; align-items: flex-end; position: relative;
+    overflow: hidden; padding-top: 80px;
+  }
+  .hero-media {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      linear-gradient(to bottom, rgba(3,9,16,0.3) 0%, rgba(3,9,16,0.15) 40%, rgba(3,9,16,0.92) 100%),
+      url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920&q=85') center/cover no-repeat;
+    transform-origin: center center;
+    animation: hero-zoom 18s ease-in-out infinite alternate;
+  }
+  @keyframes hero-zoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+  .hero-orb-1 {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%; z-index: 1; pointer-events: none;
+    background: radial-gradient(circle, rgba(0,196,204,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px; animation: orb-drift 12s ease-in-out infinite;
+  }
+  .hero-orb-2 {
+    position: absolute; width: 400px; height: 400px; border-radius: 50%; z-index: 1; pointer-events: none;
+    background: radial-gradient(circle, rgba(0,150,180,0.08) 0%, transparent 70%);
+    bottom: 20%; left: 5%; animation: orb-drift 15s ease-in-out infinite reverse;
+  }
+  @keyframes orb-drift { 0%,100%{transform:translateY(0) scale(1);} 50%{transform:translateY(-24px) scale(1.04);} }
+
+  .hero-content {
+    position: relative; z-index: 2; padding: 0 0 80px; width: 100%;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: flex-end; }
+
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px;
+    padding: 6px 16px 6px 10px; border-radius: 100px;
+    background: rgba(0,196,204,0.1); border: 1px solid rgba(0,196,204,0.25);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal);
+  }
+  .live-dot {
+    width: 7px; height: 7px; background: var(--teal); border-radius: 50%;
+    box-shadow: 0 0 10px var(--teal); animation: live 2s ease-in-out infinite;
+  }
+  @keyframes live { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.5);} }
+
+  .hero-title-row {
+    display: flex; align-items: center; justify-content: flex-start;
+    margin-bottom: 0; padding-left: 0; margin-left: -64px;
+    position: relative; left: -12px;
+  }
+  .hero-logo-img {
+    height: clamp(180px, 28vw, 280px); width: auto; display: block; flex-shrink: 0;
+    transform: translateX(-32px);
+    filter: drop-shadow(0 0 32px rgba(0,196,204,0.34));
+    animation: fadeUp 1s cubic-bezier(0.4,0,0.2,1) 0.15s both;
+  }
+  .hero-title {
+    font-size: clamp(4rem, 8vw, 8rem); font-weight: 300; font-style: italic;
+    color: var(--white); line-height: 0.95; margin-bottom: 8px;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    animation: fadeUp 1s cubic-bezier(0.4,0,0.2,1) 0.15s both;
+  }
+  .hero-sub-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 400; font-size: 1rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 24px;
+    animation: fadeUp 1s cubic-bezier(0.4,0,0.2,1) 0.25s both;
+  }
+  .hero-desc {
+    font-size: 1rem; line-height: 1.8; color: var(--text-mid);
+    max-width: 460px; margin-bottom: 36px; font-weight: 300;
+    animation: fadeUp 1s cubic-bezier(0.4,0,0.2,1) 0.35s both;
+  }
+  .hero-ctas {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    animation: fadeUp 1s cubic-bezier(0.4,0,0.2,1) 0.45s both;
+  }
+
+  /* Services pill strip */
+  .hero-services-strip {
+    display: flex; flex-direction: column; gap: 10px; justify-content: flex-end;
+    padding-bottom: 4px;
+    animation: fadeUp 1s cubic-bezier(0.4,0,0.2,1) 0.5s both;
+  }
+  .svc-pill {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 18px; border-radius: 100px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    backdrop-filter: blur(12px); transition: all 0.25s;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-mid);
+  }
+  .svc-pill svg { color: var(--teal); flex-shrink: 0; }
+  .svc-pill:hover { background: rgba(0,196,204,0.1); border-color: rgba(0,196,204,0.25); color: var(--white); }
+
+  /* ═══ WAVE DIVIDER ═══ */
+  .wave-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+  .wave-divider svg { display: block; }
+
+  /* ═══ SERVICES SECTION ═══ */
+  #services { background: transparent; }
+  .section-head { margin-bottom: 64px; }
+  .section-title { font-size: clamp(2.8rem, 5vw, 4.5rem); color: var(--white); margin-bottom: 16px; }
+  .section-title em { font-style: italic; color: var(--teal); }
+  .section-body { font-size: 1rem; line-height: 1.8; color: var(--text-muted); max-width: 420px; }
+
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .svc-card {
+    padding: 32px 28px; position: relative; overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .svc-card::after {
+    content: ''; position: absolute; inset: 0; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(0,196,204,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .svc-card-top { position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    transform: scaleX(0); transform-origin: center; transition: transform 0.4s; }
+  .svc-card:hover .svc-card-top { transform: scaleX(1); }
+  .svc-card:hover { transform: translateY(-6px); border-color: rgba(0,196,204,0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+
+  .svc-ic {
+    width: 50px; height: 50px; border-radius: 12px; margin-bottom: 20px;
+    background: rgba(0,196,204,0.1); border: 1px solid rgba(0,196,204,0.18);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .svc-card:hover .svc-ic { background: rgba(0,196,204,0.18); border-color: rgba(0,196,204,0.4); }
+  .svc-ic svg { color: var(--teal); }
+  .svc-card h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.3rem; text-transform: uppercase; color: var(--white); margin-bottom: 10px; }
+  .svc-card p { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 18px; }
+  .svc-tag {
+    display: inline-block; padding: 3px 12px; border-radius: 100px;
+    background: rgba(0,196,204,0.08); border: 1px solid rgba(0,196,204,0.18);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.08em; color: var(--teal); text-transform: uppercase;
+  }
+
+  /* ═══ GALLERY ═══ */
+  #gallery { background: transparent; padding-top: 0; }
+  .gallery-intro { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
+  .gallery-scroll-wrap { overflow-x: auto; margin: 0 -28px; padding: 0 28px; scrollbar-width: none; -ms-overflow-style: none; }
+  .gallery-scroll-wrap::-webkit-scrollbar { display: none; }
+  .gallery-track { display: flex; gap: 14px; width: max-content; }
+  .gallery-track img {
+    height: 320px; width: auto; border-radius: 14px; object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.07); transition: all 0.3s;
+    cursor: pointer;
+  }
+  .gallery-track img:hover { transform: scale(1.025); border-color: rgba(0,196,204,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+
+  /* Wide masonry grid below strip */
+  .gallery-masonry { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 14px; }
+  .gm-item { border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; }
+  .gm-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); display: block; }
+  .gm-item:hover img { transform: scale(1.06); }
+  .gm-item::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(3,9,16,0.7) 0%, transparent 50%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gm-item:hover::after { opacity: 1; }
+  .gm-tall { grid-row: span 2; }
+  .gm-item { height: 200px; }
+  .gm-tall { height: 414px; }
+
+  /* ═══ PROMOS SECTION ═══ */
+  #promos { background: transparent; }
+  .promos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .promo-card {
+    padding: 36px; display: flex; gap: 28px; align-items: flex-start;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .promo-card:hover { border-color: rgba(0,196,204,0.25); transform: translateY(-4px); }
+  .promo-badge {
+    flex-shrink: 0; width: 64px; height: 64px; border-radius: 16px;
+    background: rgba(0,196,204,0.12); border: 1px solid rgba(0,196,204,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .promo-badge svg { color: var(--teal); }
+  .promo-card h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.3rem; text-transform: uppercase; color: var(--white); margin-bottom: 8px; }
+  .promo-card p { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 16px; }
+  .promo-price {
+    font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--teal);
+    line-height: 1;
+  }
+  .promo-price small { font-size: 0.9rem; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; margin-left: 4px; }
+
+  /* Featured promo — spans both cols */
+  .promo-featured {
+    grid-column: span 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    overflow: hidden; border-radius: 18px; border: 1px solid rgba(0,196,204,0.18);
+  }
+  .promo-featured-img { position: relative; min-height: 340px; }
+  .promo-featured-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .promo-featured-body {
+    padding: 44px 40px; background: rgba(0,196,204,0.06);
+    backdrop-filter: blur(16px); display: flex; flex-direction: column; justify-content: center;
+  }
+  .promo-featured-body .big-deal {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 3.2rem; color: var(--white); line-height: 1; margin-bottom: 16px;
+  }
+  .promo-featured-body .big-deal em { color: var(--teal); font-style: italic; }
+  .promo-featured-body p { font-size: 0.95rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 28px; }
+
+  /* ═══ BEFORE / AFTER ═══ */
+  #results { background: transparent; }
+  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ba-card { border-radius: 18px; overflow: hidden; position: relative; }
+  .ba-images { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .ba-images img { width: 100%; height: 220px; object-fit: cover; object-position: top; display: block; }
+  .ba-overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;
+  }
+  .ba-divider {
+    position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--teal), transparent);
+  }
+  .ba-pill {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 1px; border-radius: 100px; overflow: hidden;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .ba-pill span {
+    padding: 3px 10px; background: rgba(0,196,204,0.9); color: var(--dark);
+  }
+  .ba-pill span + span { background: rgba(255,255,255,0.15); color: var(--white); }
+  .ba-info { padding: 16px 20px; background: rgba(255,255,255,0.04); backdrop-filter: blur(12px); }
+  .ba-info h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1rem; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+  .ba-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ═══ WHY ═══ */
+  #why { background: transparent; }
+  .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .why-img-stack { position: relative; height: 520px; }
+  .why-img-main {
+    position: absolute; right: 0; top: 0; width: 72%; height: 420px;
+    border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07);
+  }
+  .why-img-main img { width: 100%; height: 100%; object-fit: cover; }
+  .why-img-accent {
+    position: absolute; left: 0; bottom: 0; width: 52%; height: 300px;
+    border-radius: 18px; overflow: hidden; border: 2px solid rgba(0,196,204,0.2);
+  }
+  .why-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+  .why-badge-float {
+    position: absolute; top: 50%; right: -20px; transform: translateY(-50%);
+    padding: 18px 22px; border-radius: 16px; text-align: center;
+    background: rgba(0,196,204,0.12); border: 1px solid rgba(0,196,204,0.3);
+    backdrop-filter: blur(16px);
+  }
+  .why-badge-float .big-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; color: var(--teal); line-height: 1; }
+  .why-badge-float .tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+
+  .why-list { list-style: none; margin: 28px 0 36px; }
+  .why-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.92rem; line-height: 1.6; color: var(--text-mid);
+  }
+  .why-list li:last-child { border: none; }
+  .why-ck { color: var(--teal); flex-shrink: 0; margin-top: 2px; }
+
+  /* ═══ STATS ═══ */
+  #stats {
+    padding: 80px 0; position: relative; z-index: 1;
+  }
+  .stats-glass {
+    padding: 56px 48px;
+    background: rgba(0,196,204,0.06);
+    border: 1px solid rgba(0,196,204,0.14);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+  .stat-item { text-align: center; padding: 0 20px; border-right: 1px solid rgba(0,196,204,0.12); }
+  .stat-item:last-child { border: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300;
+    color: var(--white); line-height: 1; margin-bottom: 8px;
+  }
+  .stat-num em { font-style: italic; color: var(--teal); }
+  .stat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+
+  /* ═══ CTA ═══ */
+  #cta {
+    padding: 130px 0; text-align: center; position: relative; z-index: 1;
+  }
+  .cta-inner { max-width: 680px; margin: 0 auto; }
+  #cta h2 { font-size: clamp(3rem, 6vw, 5.5rem); color: var(--white); margin-bottom: 20px; }
+  #cta h2 em { color: var(--teal); font-style: italic; }
+  #cta p { font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 40px; font-family: 'Inter', sans-serif; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ═══ FOOTER ═══ */
+  footer {
+    background: rgba(2,6,12,0.98);
+    border-top: 1px solid rgba(0,196,204,0.08);
+    position: relative; z-index: 1;
+  }
+  .footer-body { padding: 80px 0 52px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 52px; }
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+    font-size: 2rem; color: var(--white); margin-bottom: 14px;
+  }
+  .footer-brand-name span { color: var(--teal); }
+  .footer-tagline { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); max-width: 240px; margin-bottom: 26px; }
+  .soc-row { display: flex; gap: 10px; }
+  .soc-btn {
+    width: 38px; height: 38px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: all 0.2s; cursor: pointer;
+  }
+  .soc-btn svg { width: 17px; height: 17px; fill: currentColor; }
+  .soc-btn:hover { color: var(--white); }
+  .soc-btn.insta:hover { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-color: transparent; }
+  .soc-btn.fb:hover    { background: #1877F2; border-color: transparent; }
+  .soc-btn.wa:hover    { background: #25D366; border-color: transparent; }
+  .soc-btn.tktk:hover  { background: #010101; border-color: #333; }
+
+  .footer-col h5 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); margin-bottom: 20px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { font-size: 0.87rem; color: var(--text-muted); transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .contact-line { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+  .contact-line svg { color: var(--teal); flex-shrink: 0; margin-top: 1px; }
+  .contact-line span, .contact-line a { font-size: 0.87rem; color: var(--text-muted); transition: color 0.2s; line-height: 1.5; }
+  .contact-line a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05); padding: 20px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.8rem; color: var(--text-muted);
+  }
+
+  /* ═══ FLOATING WA ═══ */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    width: 56px; height: 56px; border-radius: 50%; background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .wa-float::before {
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
+    border: 2px solid rgba(37,211,102,0.3);
+    animation: wa-ring 2.5s ease-out infinite;
+  }
+  @keyframes wa-ring { 0%{transform:scale(1);opacity:0.6;} 100%{transform:scale(1.55);opacity:0;} }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 36px rgba(37,211,102,0.55); }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-services-strip { display: none; }
+    .svc-grid { grid-template-columns: repeat(2,1fr); }
+    .why-layout { grid-template-columns: 1fr; }
+    .why-img-stack { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .promos-grid { grid-template-columns: 1fr; }
+    .promo-featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .promo-featured-img { min-height: 220px; }
+    .gallery-masonry { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-links+.btn { display: none; }
+    .ham { display: flex; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); gap: 28px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(0,196,204,0.1); padding-bottom: 24px; }
+    .stat-item:last-child { border: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 320px; justify-content: center; }
+    .gallery-masonry { grid-template-columns: repeat(2,1fr); }
+    .gm-tall { height: 200px; grid-row: span 1; }
+  }
+  @media (max-width: 480px) {
+    .gallery-masonry { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mobMenu">
+  <button class="mob-close" id="mobClose">
+    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#services" onclick="closeMob()">Servicios</a>
+  <a href="#gallery"  onclick="closeMob()">Galería</a>
+  <a href="#promos"   onclick="closeMob()">Promos</a>
+  <a href="#cta"      onclick="closeMob()">Reservar</a>
+  <a href="#cta" class="btn btn-teal" onclick="closeMob()" style="margin-top:8px;">Agendar Cita</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-wrap">
+      <a href="#" class="nav-logo-wrap" aria-label="Océano Centro de Belleza">
+        <img src="oceano-logo.png" alt="Océano Centro de Belleza" class="nav-logo-img"/>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Servicios</a>
+        <a href="#gallery">Galería</a>
+        <a href="#promos">Promos</a>
+        <a href="#results">Resultados</a>
+        <a href="#cta">Contacto</a>
+      </div>
+      <a href="#cta" class="btn btn-teal" style="padding:11px 22px;font-size:0.8rem;">Agendar Cita</a>
+      <button id="theme-toggle" aria-label="Cambiar tema">
+        <!-- Moon icon (shown in dark mode) -->
+        <svg class="toggle-icon icon-moon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" style="color:var(--teal)">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+        <!-- Sun icon (shown in light mode) -->
+        <svg class="toggle-icon icon-sun" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" style="color:var(--teal-deep)">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1"  x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22"   x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1"  y1="12" x2="3"  y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <button class="ham" id="ham" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-media"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-pill">
+            <span class="live-dot"></span>
+            Centro de Belleza · Aruba
+          </div>
+          <div class="hero-title-row">
+            <img src="oceano-logo.png" alt="Océano Centro de Belleza" class="hero-logo-img"/>
+          </div>
+          <p class="hero-sub-title">Centro de Belleza</p>
+          <p class="hero-desc">Donde tu estilo fluye como el mar. Expertos en alisado, color, keratina y tratamientos capilares de alta calidad.</p>
+          <div class="hero-ctas">
+            <a href="#cta" class="btn btn-teal">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Agendar Ahora
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" class="btn btn-glass">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Services pills -->
+        <div class="hero-services-strip">
+          <div class="svc-pill">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a5 5 0 015 5v1a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M3 21c0-4.5 3.5-7 9-7s9 2.5 9 7"/></svg>
+            Alisado Premium
+          </div>
+          <div class="svc-pill">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            Blower & Styling
+          </div>
+          <div class="svc-pill">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8v4l3 3"/></svg>
+            Tinte & Color
+          </div>
+          <div class="svc-pill">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            Keratina Pro
+          </div>
+          <div class="svc-pill">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h18v18H3z M3 9h18M9 21V9"/></svg>
+            Uñas & Nails
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATS ══════════ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-glass reveal">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num" data-count="981">981<em>+</em></div>
+          <div class="stat-label">Seguidores en Instagram</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<em>★</em></div>
+          <div class="stat-label">Calidad de Servicio</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="40">40<em>+</em></div>
+          <div class="stat-label">Publicaciones</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">7<em>días</em></div>
+          <div class="stat-label">Abierto toda la semana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Nuestros Servicios</div>
+      <h2 class="section-title">Todo lo que tu cabello<br/><em>necesita</em></h2>
+      <p class="section-body">Tratamientos profesionales adaptados a cada tipo de cabello, con los mejores productos del mercado.</p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc-card glass reveal d1">
+        <div class="svc-card-top"></div>
+        <div class="svc-ic">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M12 2c-2 4-4 5-4 9a4 4 0 008 0c0-4-2-5-4-9z"/><path d="M12 15v7M8 22h8"/></svg>
+        </div>
+        <h3>Alisado Premium</h3>
+        <p>Alisado permanente y semipermanente con tecnología avanzada. Resultados duraderos y naturales para todo tipo de cabello.</p>
+        <span class="svc-tag">Más Popular</span>
+      </div>
+
+      <div class="svc-card glass reveal d2">
+        <div class="svc-card-top"></div>
+        <div class="svc-ic">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Blower & Styling</h3>
+        <p>Secado profesional con volumen, brillo y definición. Estilizado para cualquier ocasión, desde el día a día hasta eventos especiales.</p>
+        <span class="svc-tag">Disponible</span>
+      </div>
+
+      <div class="svc-card glass reveal d3">
+        <div class="svc-card-top"></div>
+        <div class="svc-ic">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M8 12s1 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+        </div>
+        <h3>Tinte & Color</h3>
+        <p>Coloración profesional en todas sus modalidades: tinte completo, balayage, mechas, rayitos y corrección de color.</p>
+        <span class="svc-tag">Full Color</span>
+      </div>
+
+      <div class="svc-card glass reveal d1">
+        <div class="svc-card-top"></div>
+        <div class="svc-ic">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Keratina Pro</h3>
+        <p>Tratamiento de keratina profesional que elimina el frizz, aporta brillo y suavidad extrema. Resultados visibles desde la primera sesión.</p>
+        <span class="svc-tag">Keratina</span>
+      </div>
+
+      <div class="svc-card glass reveal d2">
+        <div class="svc-card-top"></div>
+        <div class="svc-ic">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Proteína Capilar</h3>
+        <p>Reconstrucción profunda del cabello dañado. Recupera la elasticidad, hidratación y brillo con proteínas de alta concentración.</p>
+        <span class="svc-tag">Tratamiento</span>
+      </div>
+
+      <div class="svc-card glass reveal d3">
+        <div class="svc-card-top"></div>
+        <div class="svc-ic">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.375 2.625a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.375-9.375z"/></svg>
+        </div>
+        <h3>Uñas & Nail Art</h3>
+        <p>Manicura y pedicura profesional, esculpidas en gel, acrílico y nail art personalizado. Diseños únicos para cada cliente.</p>
+        <span class="svc-tag">Nails</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GALLERY ══════════ -->
+<section id="gallery" class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="gallery-intro reveal">
+      <div>
+        <div class="eyebrow">Galería</div>
+        <h2 class="section-title">Nuestro <em>trabajo</em></h2>
+      </div>
+      <a href="https://www.instagram.com/oceanocentrodebelleza" target="_blank" rel="noopener" class="btn btn-outline-teal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Ver Instagram
+      </a>
+    </div>
+
+    <!-- Horizontal scroll strip -->
+    <div class="gallery-scroll-wrap reveal">
+      <div class="gallery-track">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80" alt="Hair treatment"/>
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=80" alt="Salon"/>
+        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&q=80" alt="Color"/>
+        <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fb6b8?w=500&q=80" alt="Blowout"/>
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80" alt="Styling"/>
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=500&q=80" alt="Hair color"/>
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500&q=80" alt="Nails"/>
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80" alt="Hair care"/>
+      </div>
+    </div>
+
+    <!-- Masonry grid -->
+    <div class="gallery-masonry">
+      <div class="gm-item gm-tall reveal d1">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Salon interior" loading="lazy"/>
+      </div>
+      <div class="gm-item reveal d2">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Hair coloring" loading="lazy"/>
+      </div>
+      <div class="gm-item reveal d3">
+        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80" alt="Color result" loading="lazy"/>
+      </div>
+      <div class="gm-item gm-tall reveal d4">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="Makeup & hair" loading="lazy"/>
+      </div>
+      <div class="gm-item reveal d2">
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Nails art" loading="lazy"/>
+      </div>
+      <div class="gm-item reveal d3">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Keratin result" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROMOS ══════════ -->
+<section id="promos" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Promociones</div>
+      <h2 class="section-title">Ofertas <em>exclusivas</em></h2>
+      <p class="section-body">Aprovecha nuestras promociones semanales y especiales del mes.</p>
+    </div>
+
+    <div class="promos-grid">
+
+      <!-- Featured promo -->
+      <div class="promo-featured reveal">
+        <div class="promo-featured-img">
+          <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fb6b8?w=800&q=80" alt="Promo especial" loading="lazy"/>
+        </div>
+        <div class="promo-featured-body">
+          <span class="eyebrow" style="margin-bottom:14px;">Promo del Mes</span>
+          <div class="big-deal">Tinte + Hidratación<br/><em>+ Blower</em></div>
+          <p>El combo completo que tu cabello necesita. Color profesional, hidratación profunda y un blowout perfecto para lucir radiante.</p>
+          <a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" class="btn btn-teal">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar Precio
+          </a>
+        </div>
+      </div>
+
+      <div class="promo-card glass reveal d1">
+        <div class="promo-badge">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h3>Lunes & Martes</h3>
+          <p>Promo semanal con descuento especial en tinte, hidratación y blower. Ideal para renovar tu look al inicio de semana.</p>
+          <div class="promo-price">Promoción<small>Especial</small></div>
+        </div>
+      </div>
+
+      <div class="promo-card glass reveal d2">
+        <div class="promo-badge">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <div>
+          <h3>Proteína Capilar</h3>
+          <p>Tratamiento de proteína completo con resultados inmediatos. Cabello reconstruido, suave y luminoso desde el primer día.</p>
+          <div class="promo-price">Promo<small>2×1</small></div>
+        </div>
+      </div>
+
+      <div class="promo-card glass reveal d3">
+        <div class="promo-badge">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <h3>Domingo Abierto</h3>
+          <p>Abrimos los domingos para que no pierdas ninguna cita. Tinte, blower, hidratación y más servicios disponibles.</p>
+          <div class="promo-price">Disponible<small>Siempre</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BEFORE / AFTER ══════════ -->
+<section id="results" class="section">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;max-width:500px;margin:0 auto 64px;">
+      <div class="eyebrow" style="justify-content:center;">Transformaciones</div>
+      <h2 class="section-title">Antes &amp; <em>Después</em></h2>
+    </div>
+    <div class="results-grid">
+
+      <div class="ba-card glass reveal d1">
+        <div class="ba-images">
+          <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=400&q=80" alt="Antes" loading="lazy"/>
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80" alt="Después" loading="lazy"/>
+        </div>
+        <div class="ba-overlay">
+          <div class="ba-divider"></div>
+          <div class="ba-pill"><span>Antes</span><span>Después</span></div>
+        </div>
+        <div class="ba-info">
+          <h4>Alisado Permanente</h4>
+          <p>Transformación completa de rizado a liso perfecto</p>
+        </div>
+      </div>
+
+      <div class="ba-card glass reveal d2">
+        <div class="ba-images">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&q=80" alt="Antes" loading="lazy"/>
+          <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80" alt="Después" loading="lazy"/>
+        </div>
+        <div class="ba-overlay">
+          <div class="ba-divider"></div>
+          <div class="ba-pill"><span>Antes</span><span>Después</span></div>
+        </div>
+        <div class="ba-info">
+          <h4>Coloración & Balayage</h4>
+          <p>Técnica de color natural con efecto degradé luminoso</p>
+        </div>
+      </div>
+
+      <div class="ba-card glass reveal d3">
+        <div class="ba-images">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80" alt="Antes" loading="lazy"/>
+          <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fb6b8?w=400&q=80" alt="Después" loading="lazy"/>
+        </div>
+        <div class="ba-overlay">
+          <div class="ba-divider"></div>
+          <div class="ba-pill"><span>Antes</span><span>Después</span></div>
+        </div>
+        <div class="ba-info">
+          <h4>Keratina Pro</h4>
+          <p>Eliminación total del frizz, brillo y suavidad máxima</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHY ══════════ -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-layout">
+      <div class="why-img-stack reveal">
+        <div class="why-img-main">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=85" alt="Salon experience" loading="lazy"/>
+        </div>
+        <div class="why-img-accent">
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=85" alt="Professional styling" loading="lazy"/>
+        </div>
+        <div class="why-badge-float">
+          <div class="big-num">100%</div>
+          <div class="tag">Satisfacción</div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="eyebrow">Por qué elegirnos</div>
+        <h2 class="section-title">Tu salón de<br/><em>confianza</em> en Aruba</h2>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin:20px 0;">Somos más que un salón de belleza. Somos el lugar donde cada cliente se convierte en protagonista de su propia transformación.</p>
+        <ul class="why-list">
+          <li>
+            <svg class="why-ck" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Estilistas profesionales con años de experiencia y formación continua
+          </li>
+          <li>
+            <svg class="why-ck" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Productos premium de las mejores marcas del mercado capilar
+          </li>
+          <li>
+            <svg class="why-ck" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Abiertos los 7 días de la semana incluyendo domingos
+          </li>
+          <li>
+            <svg class="why-ck" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Ambiente cómodo, moderno y relajante para tu experiencia
+          </li>
+          <li>
+            <svg class="why-ck" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Comunicación directa vía WhatsApp, agenda fácil y rápido
+          </li>
+        </ul>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#cta" class="btn btn-teal">Agendar Cita</a>
+          <a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" class="btn btn-glass">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="eyebrow" style="justify-content:center;color:rgba(0,196,204,0.6);">¿Lista para tu cambio?</div>
+      <h2>Tu transformación<br/>comienza <em>hoy</em></h2>
+      <p>Reserva tu cita ahora y déjate llevar por el flujo del cambio. Estamos aquí para hacerte brillar.</p>
+      <div class="cta-btns">
+        <a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" class="btn btn-teal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar por WhatsApp
+        </a>
+        <a href="tel:+2975406977" class="btn btn-glass">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          Llamar Ahora
+        </a>
+        <a href="https://www.instagram.com/oceanocentrodebelleza" target="_blank" rel="noopener" class="btn btn-glass">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-body">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <img src="oceano-logo.png" alt="Océano Centro de Belleza" style="height:56px;width:auto;margin-bottom:16px;filter:drop-shadow(0 0 6px rgba(0,196,204,0.15));"/>
+          <p class="footer-tagline">Donde tu estilo fluye como el mar. Centro de Belleza en Aruba.</p>
+          <div class="soc-row">
+            <a href="https://www.instagram.com/oceanocentrodebelleza" target="_blank" rel="noopener" class="soc-btn insta" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <ul>
+            <li><a href="#services">Alisado Premium</a></li>
+            <li><a href="#services">Blower & Styling</a></li>
+            <li><a href="#services">Tinte & Color</a></li>
+            <li><a href="#services">Keratina Pro</a></li>
+            <li><a href="#services">Proteína Capilar</a></li>
+            <li><a href="#services">Uñas & Nail Art</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Info</h5>
+          <ul>
+            <li><a href="#gallery">Galería</a></li>
+            <li><a href="#promos">Promociones</a></li>
+            <li><a href="#results">Transformaciones</a></li>
+            <li><a href="#why">Nosotros</a></li>
+            <li><a href="#cta">Reservar Cita</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <div class="contact-line">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Aruba 🇦🇼</span>
+          </div>
+          <div class="contact-line">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            <a href="tel:+2975406977">(297) 540-6977</a>
+          </div>
+          <div class="contact-line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <a href="https://api.whatsapp.com/send?phone=2975406977" target="_blank" rel="noopener" style="color:#25D366;">+297 540 6977</a>
+          </div>
+          <div class="contact-line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/oceanocentrodebelleza" target="_blank" rel="noopener" style="color:#E1306C;">@oceanocentrodebelleza</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Océano Centro de Belleza. Aruba.</span>
+      <span style="color:var(--teal);font-family:'Cormorant Garamond',serif;font-style:italic;">Donde tu estilo fluye como el mar.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════
+// OCEAN BUBBLE CANVAS — themed to the brand
+// Rising bubbles + slow wave-like drift
+// Teal-tinted, very subtle
+// ══════════════════════════════════════════════
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, bubbles, strands, raf;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = document.body.scrollHeight;
+  }
+
+  // Bubble: rises upward, slight horizontal sway
+  function makeBubble(forceY) {
+    const r = 1.5 + Math.random() * 6;
+    return {
+      x:     Math.random() * W,
+      y:     forceY !== undefined ? forceY : Math.random() * H,
+      r,
+      vy:    -(0.12 + Math.random() * 0.28),  // rise speed
+      vxAmp: 0.25 + Math.random() * 0.35,     // sway amplitude
+      phase: Math.random() * Math.PI * 2,
+      freq:  0.4 + Math.random() * 0.6,
+      // teal or white tint
+      teal:  Math.random() < 0.55,
+      alpha: 0.04 + Math.random() * 0.07,
+    };
+  }
+
+  // Strand: a long, thin, gently curved vertical line drifting slowly
+  function makeStrand() {
+    return {
+      x:     Math.random() * W,
+      vx:    (Math.random() - 0.5) * 0.08,
+      amp:   20 + Math.random() * 40,
+      freq:  0.004 + Math.random() * 0.004,
+      phase: Math.random() * Math.PI * 2,
+      alpha: 0.025 + Math.random() * 0.025,
+      len:   H * (0.15 + Math.random() * 0.3),
+    };
+  }
+
+  function init() {
+    resize();
+    const count = Math.min(Math.floor(W * H / 9000), 120);
+    bubbles = Array.from({ length: count }, () => makeBubble());
+    strands = Array.from({ length: 8 }, makeStrand);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const t = performance.now() / 1000;
+
+    // ── Draw strands (hair-like vertical wisps)
+    strands.forEach(s => {
+      s.x += s.vx;
+      if (s.x < -60) s.x = W + 60;
+      if (s.x > W + 60) s.x = -60;
+
+      const yStart = scrollY * 0.05 % H; // subtle parallax tie-in
+      ctx.save();
+      ctx.strokeStyle = `rgba(0,196,204,${s.alpha})`;
+      ctx.lineWidth   = 0.8;
+      ctx.beginPath();
+      let yy = 0;
+      let first = true;
+      while (yy < s.len) {
+        const xx = s.x + Math.sin(yy * s.freq + t * 0.3 + s.phase) * s.amp;
+        if (first) { ctx.moveTo(xx, yy); first = false; }
+        else ctx.lineTo(xx, yy);
+        yy += 4;
+      }
+      ctx.stroke();
+      ctx.restore();
+    });
+
+    // ── Draw bubbles
+    bubbles.forEach(b => {
+      // Move
+      b.y  += b.vy;
+      b.x  += Math.sin(t * b.freq + b.phase) * b.vxAmp * 0.4;
+
+      // Recycle at top → respawn at bottom
+      if (b.y + b.r < 0) {
+        Object.assign(b, makeBubble(H + b.r));
+      }
+      if (b.x < -b.r * 2) b.x = W + b.r;
+      if (b.x > W + b.r * 2) b.x = -b.r;
+
+      const alpha = b.alpha;
+      ctx.save();
+
+      if (b.teal) {
+        // Teal bubble with inner gradient
+        const g = ctx.createRadialGradient(b.x - b.r * 0.3, b.y - b.r * 0.3, 0, b.x, b.y, b.r);
+        g.addColorStop(0, `rgba(0,220,230,${alpha * 1.4})`);
+        g.addColorStop(0.5, `rgba(0,196,204,${alpha})`);
+        g.addColorStop(1, `rgba(0,150,170,0)`);
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+        // rim highlight
+        ctx.strokeStyle = `rgba(0,220,230,${alpha * 0.8})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      } else {
+        // White/silver bubble
+        const g = ctx.createRadialGradient(b.x - b.r * 0.4, b.y - b.r * 0.4, 0, b.x, b.y, b.r);
+        g.addColorStop(0, `rgba(255,255,255,${alpha * 1.6})`);
+        g.addColorStop(1, `rgba(200,230,240,0)`);
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+      ctx.restore();
+    });
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  let rTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(rTimer);
+    rTimer = setTimeout(() => { cancelAnimationFrame(raf); init(); draw(); }, 250);
+  }, { passive: true });
+
+  window.addEventListener('load', () => { cancelAnimationFrame(raf); init(); draw(); });
+
+  init(); draw();
+})();
+
+// ── Theme toggle
+const themeBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Persist across reload
+if (localStorage.getItem('oceano-theme') === 'light') body.classList.add('light');
+
+themeBtn.addEventListener('click', () => {
+  body.classList.toggle('light');
+  localStorage.setItem('oceano-theme', body.classList.contains('light') ? 'light' : 'dark');
+});
+
+// ── Navbar scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive: true });
+
+// ── Mobile menu
+const ham    = document.getElementById('ham');
+const mobM   = document.getElementById('mobMenu');
+const mobCls = document.getElementById('mobClose');
+ham.addEventListener('click',    () => { mobM.classList.add('open');    document.body.style.overflow = 'hidden'; });
+mobCls.addEventListener('click', () => closeMob());
+function closeMob() { mobM.classList.remove('open'); document.body.style.overflow = ''; }
+
+// ── Scroll reveal
+const ios = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ios.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ios.observe(el));
+
+// ── Horizontal gallery auto-scroll
+const track = document.querySelector('.gallery-track');
+if (track) {
+  let scrolling = false;
+  setInterval(() => {
+    if (!scrolling) {
+      const wrap = track.parentElement;
+      wrap.scrollBy({ left: 1, behavior: 'auto' });
+      if (wrap.scrollLeft + wrap.offsetWidth >= wrap.scrollWidth - 10) {
+        wrap.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    }
+  }, 20);
+  track.parentElement.addEventListener('mouseenter', () => scrolling = true);
+  track.parentElement.addEventListener('mouseleave', () => scrolling = false);
+}
+</script>
+</body>
+</html>
